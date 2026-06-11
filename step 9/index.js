@@ -4,7 +4,7 @@ const cors =require('cors')
 const app=express()
 
 app.use(cors())
-app.use(express.static('dist'))
+
 // const requestLogger = (request, response, next) => {
 //   console.log('Method:', request.method)
 //   console.log('Path:  ', request.path)
@@ -105,7 +105,7 @@ app.post('/api/persons', (request, response) => {
 // }
 // app.use(unknownEndpoint)
 
-const PORT = process.env.PORT || 3001
+const PORT =  3001
 app.listen(PORT,()=>{
     console.log(`port ${PORT} running...`)
 })
