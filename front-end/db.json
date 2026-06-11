@@ -1,0 +1,40 @@
+{
+  "persons": [
+    {
+      "name": "Mary Poppendieck",
+      "number": "39-23-6423122",
+      "id": "4"
+    },
+    {
+      "name": "John Doe",
+      "number": "123-456789",
+      "id": "5"
+    },
+    {
+      "id": "6",
+      "name": "joe",
+      "number": "23456"
+    },
+    {
+      "name": "arto",
+      "number": "",
+      "id": "8"
+    },
+    {
+      "id": "9343",
+      "name": "jj",
+      "number": "3131"
+    },
+    {
+      "id": "0cf2",
+      "name": "hjh",
+      "number": "321"
+    },
+    {
+      "id": "ead1",
+      "name": "kiptuot",
+      "number": "85455969"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
