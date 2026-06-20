@@ -91,9 +91,10 @@ app.post('/api/notes', (request, response) => {
     id: generateId(),
   }
 
-  notes = notes.concat(note)
+  note.save().then(savedNote=>{
+    response.json(note)
+  })
 
-  response.json(note)
 })
 
 app.put('/api/notes',(req,res)=>{
