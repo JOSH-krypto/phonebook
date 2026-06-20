@@ -1,8 +1,29 @@
+require('dotenv').config()
+
+const mongoose = require('mongoose')
 const express = require('express')
 const cors = require('cors')
+const Note = require('./models/notes')
+
+
+
+mongoose.connect(process.env.MONGODB_URI, { family: 4 })
+  .then(result => {
+    console.log('connected to MongoDB')
+  })
+  .catch(error => {
+    console.log('error connecting to MongoDB:', error.message)
+  })
+mongoose.set('strictQuery',false)
+mongoose.connect(process.env.MONGODB_URI, { family: 4 })
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
 const app = express()
-
-
+// const Note = mongoose.model('Note', noteSchema)
 app.use(cors())
 app.use(express.static('dist'))
 app.use(express.json())
@@ -27,7 +48,10 @@ let notes = [
 
 
 app.get('/api/notes',(request,response) =>{
-  response.json(notes)
+  Note.find({}).then(notes =>{
+      response.json(notes)
+  })
+
 })
 app.get('/api/notes/:id', (request, response) => {
   const id = request.params.id
@@ -83,6 +107,6 @@ app.put('/api/notes',(req,res)=>{
   res.json(note)
 
 })
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)
