@@ -1,5 +1,5 @@
-import axios from 'axios';
-const BASE_URL= 'https://phonebook-yyk9.onrender.com/api/persons'
+import axios from 'axios'
+const BASE_URL= 'http://localhost:3001/api/persons'
 
 const getAll =()=>{
     return axios.get(BASE_URL)

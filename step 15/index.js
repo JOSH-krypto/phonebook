@@ -52,49 +52,49 @@ morgan.token('body', (req) => {
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
-let persons = [
+// let persons = [
 
-  {
+//   {
 
-    "id": "1",
+//     "id": "1",
 
-    "name": "Arto Hellas",
+//     "name": "Arto Hellas",
 
-    "number": "040-123456"
+//     "number": "040-123456"
 
-  },
+//   },
 
-  {
+//   {
 
-    "id": "2",
+//     "id": "2",
 
-    "name": "Ada Lovelace",
+//     "name": "Ada Lovelace",
 
-    "number": "39-44-5323523"
+//     "number": "39-44-5323523"
 
-  },
+//   },
 
-  {
+//   {
 
-    "id": "3",
+//     "id": "3",
 
-    "name": "Dan Abramov",
+//     "name": "Dan Abramov",
 
-    "number": "12-43-234345"
+//     "number": "12-43-234345"
 
-  },
+//   },
 
-  {
+//   {
 
-    "id": "4",
+//     "id": "4",
 
-    "name": "Mary Poppendieck",
+//     "name": "Mary Poppendieck",
 
-    "number": "39-23-6423122"
+//     "number": "39-23-6423122"
 
-  }
+//   }
 
-]
+// ]
 
 app.get('/api/persons', (req, res) => {
 
@@ -110,7 +110,7 @@ app.get('/api/persons/:id', (req, res) => {
 
   const id = req.params.id
 
-  const person = persons.find(person => person.id === id)
+  Person.findById(id).then(person => {
 
     if (person) {
 
@@ -122,32 +122,27 @@ app.get('/api/persons/:id', (req, res) => {
 
     }
 
-})
-
-
-app.delete('/api/persons/:id', (req, res) => {
-
-  const id = req.params.id
-
-  persons = persons.filter(person => person.id !== id)
-
-    res.status(204).end()
-
-})
-
-const generateId = () => {
-
-  const maxId = persons.length > 0
-
-    ? Math.max(...persons.map(p => Number(p.id)))
-
-    : 0
-
-  return String(maxId + 1)
+  })
 
 }
 
-app.post('/api/persons', (request, response) => {
+)
+
+
+
+// const generateId = () => {
+
+//   const maxId = persons.length > 0
+
+//     ? Math.max(...persons.map(p => Number(p.id)))
+
+//     : 0
+
+//   return String(maxId + 1)
+
+// }
+
+app.post('/api/persons', (request, response,next) => {
 
   const body = request.body
 
@@ -161,24 +156,14 @@ app.post('/api/persons', (request, response) => {
 
   }
 
-  // if (persons.some(p => p.name === body.name)) {
+ 
 
-  //   return response.status(400).json({
-
-  //     error: 'name must be unique'
-
-  //   })
-
-  // }
-
-  const person = {
-
+  const person = new Person(
+    {
     name: body.name,
-
     number: body.number,
-
-
   }
+) 
 
   person.save().then(savedPerson => {
 
@@ -186,6 +171,18 @@ app.post('/api/persons', (request, response) => {
 
   })
     .catch(error => { next(error) })
+
+})
+
+app.delete('/api/persons/:id', (req, res, next) => {
+
+  const id = req.params.id
+
+  Person.findByIdAndDelete(id).then(result => {
+
+    res.status(204).end()
+
+  })
 
 })
 

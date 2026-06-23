@@ -1,0 +1,35 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "content": "HTML is easy",
+      "important": true
+    },
+    {
+      "id": "2",
+      "content": "Browser can execute only JavaScript",
+      "important": false
+    },
+    {
+      "id": "3",
+      "content": "it worked ^^",
+      "important": true
+    },
+    {
+      "id": "4",
+      "content": "harro",
+      "important": true
+    },
+    {
+      "id": "5",
+      "content": "team kubwa",
+      "important": false
+    },
+    {
+      "id": "7",
+      "content": "reggae **",
+      "important": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

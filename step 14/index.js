@@ -110,7 +110,7 @@ app.get('/api/persons/:id', (req, res) => {
 
   const id = req.params.id
 
-  Person.findById(id).then(person => {
+  const person = persons.find(person => person.id === id)
 
     if (person) {
 
@@ -122,21 +122,16 @@ app.get('/api/persons/:id', (req, res) => {
 
     }
 
-  })
+})
 
-}
-
-)
 
 app.delete('/api/persons/:id', (req, res) => {
 
   const id = req.params.id
 
-  Person.findByIdAndDelete(id).then(result => {
+  persons = persons.filter(person => person.id !== id)
 
     res.status(204).end()
-
-  })
 
 })
 
@@ -166,7 +161,15 @@ app.post('/api/persons', (request, response) => {
 
   }
 
- 
+  // if (persons.some(p => p.name === body.name)) {
+
+  //   return response.status(400).json({
+
+  //     error: 'name must be unique'
+
+  //   })
+
+  // }
 
   const person = {
 
