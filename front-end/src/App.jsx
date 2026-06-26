@@ -111,11 +111,12 @@ const App = () => {
               setMessage(null)
             }, 3000)
           })
-          .catch(() => {
-            setMessage("Error updating person")
+          .catch(error => {
+            setMessage(error.response?.data?.error)
             setMessageType('error')
 
             setTimeout(() => setMessage(null), 3000)
+        
           })
       }
       return
@@ -141,11 +142,12 @@ const App = () => {
           setMessage(null)
         }, 3000)
       })
-      .catch(() => {
-        setMessage("Error adding person")
+      .catch(error => {
+         setMessage(error.response?.data?.error)
         setMessageType('error')
 
         setTimeout(() => setMessage(null), 3000)
+        // console.log(error.response.data.error)
       })
   }
 

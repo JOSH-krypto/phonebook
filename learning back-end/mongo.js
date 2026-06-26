@@ -9,13 +9,18 @@ const password = process.argv[2]
 
 const url = `mongodb+srv://user_1:${password}@cluster0.aqqukzg.mongodb.net/noteApp?retryWrites=true&w=majority&appName=Cluster0`
 
-mongoose.set('strictQuery',false)
+mongoose.set('strictQuery', false)
 
 mongoose.connect(url, { family: 4 })
 
 const noteSchema = new mongoose.Schema({
-  content: String,
+  content: {
+    type: String,
+    minLength: 5,
+    required: true
+  },
   important: Boolean,
+
 })
 noteSchema.set('toJSON', {
   transform: (document, returnedObject) => {
