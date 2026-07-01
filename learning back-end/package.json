@@ -15,5 +15,11 @@
     "test": "\"echo \"Error: no test specified\\\" && exit 1\""
   },
   "author": "josh",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.5.0",
+    "globals": "^17.7.0"
+  }
 }
