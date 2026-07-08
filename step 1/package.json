@@ -1,0 +1,22 @@
+{
+  "name": "part-4",
+  "version": "1.0.0",
+  "description": "\"\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "\"echo \\\"Error no description\"\\ && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JOSH-krypto"
+  },
+  "author": "JOSH",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.3"
+  }
+}
