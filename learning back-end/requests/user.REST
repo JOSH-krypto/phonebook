@@ -1,0 +1,28 @@
+# GET http://localhost:3001/api/users/
+# ###
+# POST http://localhost:3001/api/users/
+# Content-Type: application/json
+
+# {
+#     "username": "root2",
+#     "name": "Superuser",
+#     "password": "salainen" 
+# }
+
+# ###
+# POST http://localhost:3001/api/notes
+# Content-Type: application/json
+
+# {
+#     "content":"Javascript in helsinki",
+#     "important":"true"
+# }
+
+# ###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username":"root2",
+    "password":"salainen"
+}
