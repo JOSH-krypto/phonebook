@@ -1,0 +1,12 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+
+{
+  "title": "My new blog",
+  "author": "J",
+  "url": "https://example.com",
+  "likes": 0,
+  "userId": "6a683896ad41d07a1e2ed228"
+}
+
